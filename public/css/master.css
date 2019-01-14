@@ -80,6 +80,16 @@ html {
 cursor: pointer;
 }
 
+.home-bg-img {
+  background-color: #00000078;
+  max-width: 32.333333%;
+  margin: 0 5px;
+  min-height: 390px;
+cursor: pointer;
+background-size: cover;
+background-repeat: no-repeat;
+}
+
 .home_bg_img {
   height: 100vh;
   background-image:linear-gradient( rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 1.33) ),  url('/images/section_4.jpg');
@@ -281,4 +291,51 @@ color: white;
 
   .bg-img.active {
     background-size: cover;
+  }
+
+  /* posts Hovers */
+
+  .bg-img:hover .img-title {
+    top: 5%;
+  }
+
+  .bg-img:hover .description {
+    top: 15%;
+  }
+
+  .bg-img:hover .titles {
+    opacity: 0;
+  }
+
+  .bg-img:hover{
+    background-size: cover;
+  }
+
+  .home-bg-img:hover .img-title {
+    top: 5%;
+  }
+
+  .home-bg-img:hover .description {
+    top: 15%;
+  }
+
+  .home-bg-img:hover .titles {
+    opacity: 0;
+  }
+
+  .home-bg-img:hover{
+    background-size: cover;
+  }
+
+  /* categories */
+
+  .cat {
+    padding: 10px;
+    margin-left: 2%;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+
+  .all_categories {
+    cursor: pointer;
   }

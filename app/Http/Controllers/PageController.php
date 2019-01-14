@@ -36,7 +36,8 @@ class PageController extends Controller
       $category = Category::all();
       $categories = Category::all();
       $post = Post::where('category',$id)->get();
-      return response()->json(['response' => 'success', 'post' => $post]);
+      $posts = DB::table('posts')->orderBy('vote', 'desc')->take(6)->get();
+      return response()->json(['response' => 'success', 'post' => $post , 'posts' => $posts]);
 
     }
 }

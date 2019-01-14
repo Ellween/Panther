@@ -52,24 +52,6 @@ $(document).ready(function(){
 
     $(document).ready(function(){
 
-
-
-      $('.bg-img').on({
-        mouseover: function(){
-          $(this).find('.img-title').addClass('active');
-          $(this).find('.description').addClass('active');
-          $(this).find('.titles').addClass('active');
-          $(this).addClass('active');
-        },
-        mouseleave: function(){
-          $(this).find('.img-title').removeClass('active');
-          $(this).find('.description').removeClass('active');
-          $(this).find('.titles').removeClass('active');
-          $(this).removeClass('active');
-        }
-      });
-
-
       $('.img-1').on({
         mouseover: function(){
           $(this).find('.leader_disc').addClass('active');
@@ -98,15 +80,14 @@ $(document).ready(function(){
     });
 
 
-$(document).ready(function(){
-    $('.vote').click(function(event){
-      event.preventDefault();
+$(document).on('click' ,'.vote' ,function(event){
+   
+      
+      var variable = $(event.target).parent().parent().find('.votes');
 
-      var variable = $(this).parent().parent().find('.votes');
+      var votes = $(event.target).parent().parent().find('.votes').text();
 
-      var votes = $(this).parent().parent().find('.votes').text();
-
-      var post_id = $(this).parent().parent().parent().parent().parent().attr('data-id');
+      var post_id = $(event.target).parent().parent().parent().parent().parent().attr('data-id');
 
       console.log(post_id);
 
@@ -132,7 +113,7 @@ $(document).ready(function(){
            },
 
       });
-    });
+  
 });
 
 
@@ -157,13 +138,67 @@ $(document).ready(function(){
            success: function(response)
          {
 
-          console.log(response.post.length);
-         console.log(response.post[0].id)
+          $(document).ready(function(){
+            $('.all_categories').click(function(){
+            
+              var all ='';
+
+              for (let i = 0; i < response.posts.length; i++) {
+                
+                all+= `  <div data-id =`+ response.posts[i].id + ` class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url(/images/`+ response.posts[i].bg_img +`);' >
+                <div class="both_images_titles h-100  d-flex justify-content-between flex-column" style ='position: relative;'>
+                  <div class="titles pt-3 text-center">
+                    <h3 style ='font-weight: 300;'>`+ response.posts[i].title + `</h3>
+                  </div>
+
+                  <div class="img-title d-flex pb-3 w-100 justify-content-between">
+                    <div class ='image_title d-flex'>
+                    <img src="/images/`+ response.posts[i].image +`" alt="" style='height: 100%; width: 100px;'>
+                    <div class="d-flex flex-column">
+                      <h3 class ='text-light pl-3' style ='font-weight: 700; font-size: 22px;'>`+ response.posts[i].place_name + `</h3>
+
+
+
+                    </div>
+                  </div>
+                    <div class ='voting'>
+                    <form class=" d-flex align-items-center" action="/add_vote/{{$post->id}}" method="post">
+                      <i class="fas fa-arrow-alt-circle-up vote"></i>
+                          <p class ='votes ml-2' style ='margin: 0;' >`+ response.posts[i].vote + `</p>
+                    </form>
+
+
+                  </div>
+                </div>
+                <div class ='post_link w-100 d-flex justify-content-end'>
+
+                <a  href ='/post/`+ response.posts[i].id +`' style ='color: white;' ><p  class ='specific_post' style ='text-decoration: underline;' >Read More</p></a>
+
+</div>
+
+
+
+
+                </div>
+                <div class="description p-2">
+                  <p class ='p-2' >`+ response.posts[i].content +`</p>
+                </div>
+                <img class ='invisible' src ='/images/img_size.svg'>
+              </div>`;
+                
+              }
+
+              $('.amas').html(all);
+
+            });
+
+          });
+
           var inputs ='';
 
          for(var i = 0 ; i < response.post.length; i++)
          {
-            inputs += `  <div data-id =`+ response.post[i].id + ` class="col-md-6  col-lg-4 col-sm-12  mt-3  bg-img" style ='overflow: hidden;' >
+            inputs += `  <div data-id =`+ response.post[i].id + ` class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden;  background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url(/images/`+ response.post[i].bg_img +`);' >
                 <div class="both_images_titles h-100  d-flex justify-content-between flex-column" style ='position: relative;'>
                   <div class="titles pt-3 text-center">
                     <h3 style ='font-weight: 300;'>`+ response.post[i].title + `</h3>
@@ -171,6 +206,7 @@ $(document).ready(function(){
 
                   <div class="img-title d-flex pb-3 w-100 justify-content-between">
                     <div class ='image_title d-flex'>
+                    <img src="/images/`+ response.post[i].image +`" alt="" style='height: 100%; width: 100px;'>
                     <div class="d-flex flex-column">
                       <h3 class ='text-light pl-3' style ='font-weight: 700; font-size: 22px;'>`+ response.post[i].place_name + `</h3>
 
@@ -180,7 +216,6 @@ $(document).ready(function(){
                   </div>
                     <div class ='voting'>
                     <form class=" d-flex align-items-center" action="/add_vote/{{$post->id}}" method="post">
-                      @csrf
                       <i class="fas fa-arrow-alt-circle-up vote"></i>
                           <p class ='votes ml-2' style ='margin: 0;' >`+ response.post[i].vote + `</p>
                     </form>
@@ -190,7 +225,7 @@ $(document).ready(function(){
                 </div>
                 <div class ='post_link w-100 d-flex justify-content-end'>
 
-                <a  href ='/post/{{$post->id}}' style ='color: white;' ><p  class ='specific_post' style ='text-decoration: underline;' >Read More</p></a>
+                <a  href ='/post/`+ response.post[i].id +`' style ='color: white;' ><p  class ='specific_post' style ='text-decoration: underline;' >Read More</p></a>
 
 </div>
 
@@ -199,7 +234,7 @@ $(document).ready(function(){
 
                 </div>
                 <div class="description p-2">
-                  <p class ='p-2' >{{$post->content}}</p>
+                  <p class ='p-2' >`+ response.post[i].content +`</p>
                 </div>
                 <img class ='invisible' src ='/images/img_size.svg'>
               </div>`;

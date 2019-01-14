@@ -27,10 +27,23 @@ class PostController extends Controller
          if($request->hasFile('image')){
 
          $image = $request->file('image');
+
          $pic_filename = time() . '.' . $image->getClientOriginalExtension();
          $pic_location = public_path('/images/' . $pic_filename);
-         Image::make($image)->save($pic_location);
+         Image::make($image)->resize(100, 100)->crop(100,100)->save($pic_location);
        }
+
+
+
+       if($request->hasFile('bg-img')){
+
+        $bg_img = $request->file('bg-img');
+        $bg_img_filename = time() . '.' . $bg_img->getClientOriginalExtension();
+        $bg_location = public_path('/images');
+        $bg_img->move($bg_location, $bg_img_filename);
+      }
+
+
 
            if ($request->hasFile('gif')) {
           $gif = $request->file('gif');
@@ -46,11 +59,13 @@ class PostController extends Controller
         'image' => $pic_filename,
         'place_name' => request('place_name'),
         'content' => request('content'),
-
+        'body' => request('long_text'),
       ]);
-          $post->body = $request->long_text;
+
+          dd($post);
           $post->gif = $name;
           $post->category = $request->category_id;
+          $post->bg_img = $bg_img_filename;
           $post->save();
 
 

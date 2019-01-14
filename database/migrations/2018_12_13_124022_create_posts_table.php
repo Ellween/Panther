@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->integer('vote')->default(0)->nullable();
             $table->text('body')->nullable();
             $table->string('gif')->nullable();
+            $table->string('bg_img')->nullable();
             $table->timestamps();
         });
     }
