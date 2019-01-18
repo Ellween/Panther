@@ -34,3 +34,8 @@ Route::post('/add_post','PostController@store');
 // Add vote
 
 Route::post('/add_vote/{post}','PostController@storevote');
+
+
+// Add Comment
+
+Route::post('/add_comment/{post}', 'CommentController@store');

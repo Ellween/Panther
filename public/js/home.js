@@ -256,3 +256,44 @@ $(document).ready(function(){
 
   });
 });
+
+
+$(document).ready(function(){
+  $('#add_comment').click(function(e){
+    e.preventDefault();
+
+    var text = $('#comment_text').val();
+    var id = $('.section_3').attr('data-id');
+    
+    $.ajax({
+
+      headers: {
+           'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+         },
+
+         method: 'POST',
+         url: '/add_comment/' + id,
+         data: {text: text} ,
+
+        success:function(data)
+        {
+          console.log(data);
+          $('.all_comments').append(data);
+        },
+
+        error:function()
+        {
+          console.log('merh');
+        }
+
+
+
+      });
+    
+
+
+
+
+
+  });
+});

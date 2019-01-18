@@ -2,7 +2,7 @@
 
 
 @section('content')
-  <section class ='section_3'>
+  <section class ='section_3' data-id= "{{$post->id}}">
       <div class="section_2_bg_img pt-5 pb-5">
         <div class="container-fluid d-flex flex-column justify-content-around text-light h-100 align-items-center">
           <h1>{{$post->title}}</h1>
@@ -28,6 +28,34 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+
+                <div class="comment">
+                      <div class="comment_text">
+                          <textarea name="text" id="comment_text" class ='form-control mt-4'  rows="5"></textarea>
+                         </div>
+                         <div class="add_comment d-flex justify-content-center pt-3">
+                           <button type ='submit' class= 'btn bnt-primary' id ='add_comment' >Add Comment</button>
+                         </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+                <div class="all_comments pt-5">
+                @foreach ($post->comments as $comment)
+                  @include('layout.comments')
+                @endforeach
               </div>
             </div>
           </div>

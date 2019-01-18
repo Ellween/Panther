@@ -62,7 +62,6 @@ class PostController extends Controller
         'body' => request('long_text'),
       ]);
 
-          dd($post);
           $post->gif = $name;
           $post->category = $request->category_id;
           $post->bg_img = $bg_img_filename;

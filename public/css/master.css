@@ -339,3 +339,20 @@ color: white;
   .all_categories {
     cursor: pointer;
   }
+
+
+
+/* Comment_section */
+
+.comment {
+  width: 25%;
+}
+
+.all_comments{
+  width: 25%;
+  color: white;
+}
+
+.all_comments h1 {
+  font-weight: bold;
+}
