@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -55,11 +55,13 @@ class RegisterController extends Controller
             'locations' => 'required|string|max:255',
             'passangers' => 'required|string|max:255',
             'data' => 'required|string|max:255',
+            'password' => 'required|string|min:6',
             'email' => 'required|string|email|max:255|unique:users',
         ]);
 
 
     }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -67,6 +69,11 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+
+    
+   
+
+
     protected function create(array $data)
     {
 
@@ -75,6 +82,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'locations' => $data['locations'],
             'passangers' => $data['passangers'],
+            'password' => Hash::make($data['password']),
             'data' => $data['data'],
             'email' => $data['email'],
         ]);

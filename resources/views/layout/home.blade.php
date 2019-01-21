@@ -34,6 +34,37 @@
 
 
 
+<div class="login">
+  <div class="container">
+    <div class="row">
+      <div class="login_header d-flex justify-content-center w-100" >
+        <h1>Login</h1>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <form action="{{ route('login') }}" method="POST">
+        @csrf
+          <div class="login_username d-flex flex-column align-items-center justify-content-center w-100 p-5">
+              <div class="username w-100 text-center">
+                <h1>username</h1>
+                <input type = 'email' class ='form-control'  name ='email'>
+              </div>
+              <div class="password w-100 text-center">
+                <h1>password</h1>
+                <input type ='password' class ='form-control' name ='password' >
+              </div>
+              <div class="log pt-5">
+                <button type ='submit'  class ='btn btn-primary' >Login</button>
+              </div>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 <section class='section_2'>
 <div class="container-fluid">
   <div class="row">
@@ -54,6 +85,14 @@
                   <div class="form_name" style = 'position: relative;'>
                     <label for="email" class ='va'  >Email</label>
                     <input id ='email' class ='form-control mt-4 hm' type="text" name="email" value="" required>
+                  </div>
+                  <div class="form_name" style = 'position: relative;'>
+                      <label for="email" class ='va'  >Password</label>
+                      <input id ='password' class ='form-control mt-4 hm' type="password" name="password" value="" required>
+                  </div>
+                  <div class="form_name" style = 'position: relative;'>
+                      <label for="email" class ='va'  >User Picture</label>
+                      <input id ='user_pic' class ='form-control mt-4 hm' type="file" name="user_pic" value="" required>
                   </div>
                   <div class="form_name" style = 'position: relative;'>
                     <label for="phone" class ='va'  >Phone Number</label>

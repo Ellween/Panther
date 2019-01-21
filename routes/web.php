@@ -11,7 +11,11 @@
 |
 */
 
+//Pages 
+
 Route::get('/', 'PageController@getIndex');
+Route::get('/user','PageController@userPage');
+Route::get('/logout','Auth\LoginController@logout');
 
 Auth::routes();
 

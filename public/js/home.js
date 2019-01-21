@@ -297,3 +297,9 @@ $(document).ready(function(){
 
   });
 });
+
+$(document).ready(function(){
+  $('.menu-li-login').click(function(){
+    $('.login').addClass("active");
+  });
+}); 

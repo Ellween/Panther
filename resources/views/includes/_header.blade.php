@@ -9,17 +9,20 @@
             </div>
             <div class="menu">
               <ul class="m-0 p-0 d-flex justify-content-end">
+
+                @if(Auth::check())
+                  <a href="/user"><li class ='menu-li'><img src="{{asset('images/' . $user->user_pic)}}" alt="" style='width: 23px;'></li></a>
+                @else 
+                  <li class ='menu-li-login'>Login</li>
+                @endif
+
                 <li class ='menu-li-home'>Home</li>
                 <li class ='menu-li-location'>Locations</li>
                 <li class ='menu-li-guide'>Guidlines</li>
                 <li class ='menu-li'>Contact Us</li>
                 <li class ='menu-li'>About Us</li>
               </ul>
-
-
             </div>
-
-
           </div>
         </div>
       </div>
