@@ -50,6 +50,7 @@ Route::post('/add_comment/{post}', 'CommentController@store');
 
 // User Settings
 Route::get('/user','PageController@userPage');
+Route::get('/user_posts', 'PageController@user_posts');
 
 Route::get('/user/profile_settings','PageController@profile_setting');
     // ChangeUser Settings 

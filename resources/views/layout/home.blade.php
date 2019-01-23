@@ -227,8 +227,15 @@
                   
                   <div class ='post_link w-100 d-flex justify-content-end'>
                     <div class="div stars_read d-flex flex-column">
-                        <div>
-                            <p class ='star' ><i class="fas fa-star"></i></p>
+                        <div id ={{$posts_array}}  data-id = {{$post->id}}>
+
+                          @foreach ($posts_array as $array)
+                            @if ( $array === $post->id )
+                            <p class ='star' style ='color:red;' ><i class="fas fa-star"></i></p>
+
+                            @endif
+                          @endforeach
+
                         </div>
                     <a  href ='/post/{{$post->id}}' style ='color: white;' ><p  class ='specific_post' style ='text-decoration: underline;' >Read More</p></a>
   

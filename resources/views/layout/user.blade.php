@@ -12,7 +12,7 @@
                     <a href ='/user'><li class="myprofile">My Profile</li></a> 
                     <a href ='/user/profile_settings'><li class="myprofile">Profile settings</li></a>
                     <li class="myprofile">My Posts</li>
-                    <li class="myprofile">Favorite Posts</li>
+                    <a href ='/user_posts'><li class="myprofile">Favorite Posts</li></a> 
                     <a href ='/logout'><li class="myprofile">Log Out</li></a>
                 </ul>
             </div>

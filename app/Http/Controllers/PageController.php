@@ -27,10 +27,15 @@ class PageController extends Controller
         
       // }])->orderBy('vote','desc')->take(6)->get();
 
-      $post = $user->posts()->get();
+      // $post = $user->posts()->get();
       
+      $post = Post::with('users')->get();
+
+      $posts_array =  $user->posts->pluck('id');
+
+
       
-      return view('layout.home', compact('post','category','categories','user', 'posts'));
+      return view('layout.home', compact('post','category','categories','user', 'posts_array'));
     }
 
   public function userPage()
@@ -44,8 +49,15 @@ class PageController extends Controller
 
   {
     $user = Auth::user();
-
     return view('layout.user_settings' , compact('user'));
+  }
+
+  public function user_posts()
+  {
+    $user = Auth::user();
+    $post = $user->posts()->get();
+
+    return view('layout.user_posts' , compact('user','post  q'));
   }
 
   public function getPosts()
