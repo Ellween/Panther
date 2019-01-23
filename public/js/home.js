@@ -303,3 +303,36 @@ $(document).ready(function(){
     $('.login').addClass("active");
   });
 }); 
+
+
+$(document).ready(function(){
+  $('.star').click(function(){
+    var id = $(this).parent().parent().parent().parent().attr('id');
+    var post_id = $(this).parent().parent().parent().attr('data-id');
+    $.ajax({
+
+      headers: {
+           'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+         },
+
+         method: 'POST',
+         url: '/add_favorite/' + post_id ,
+         data: {id: id} ,
+
+        success:function(data)
+        {
+          console.log('yes');
+         
+        },
+
+        error:function()
+        {
+          console.log('merh');
+        }
+
+
+
+      });
+
+  });
+}); 

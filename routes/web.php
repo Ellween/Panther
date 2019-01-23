@@ -14,7 +14,6 @@
 //Pages 
 
 Route::get('/', 'PageController@getIndex');
-Route::get('/user','PageController@userPage');
 Route::get('/logout','Auth\LoginController@logout');
 
 Auth::routes();
@@ -40,6 +39,18 @@ Route::post('/add_post','PostController@store');
 Route::post('/add_vote/{post}','PostController@storevote');
 
 
+// Add Favorite 
+
+Route::post('/add_favorite/{post}','PostController@storeFav');
+
 // Add Comment
 
 Route::post('/add_comment/{post}', 'CommentController@store');
+
+
+// User Settings
+Route::get('/user','PageController@userPage');
+
+Route::get('/user/profile_settings','PageController@profile_setting');
+    // ChangeUser Settings 
+        Route::post('/change' , 'UsersController@change');

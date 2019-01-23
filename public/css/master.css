@@ -382,11 +382,9 @@ color: white;
 
 .profiles {
   list-style: none;
-  border: 1px solid red;
 }
 
 .main_side {
-  border: 1px solid red;
   padding-top: 10px;
 }
 
@@ -411,4 +409,10 @@ color: white;
 .profile_interest {
   width: calc(100% - 300px);
   padding-left: 20px;
+}
+
+
+
+.star:hover {
+color: yellow;
 }

@@ -16,10 +16,21 @@ class PageController extends Controller
   public function getIndex()
     {
       $user = Auth::user();
+      $single = $user->id;
       $category = Category::all();
       $categories = Category::all();
-      $post = DB::table('posts')->orderBy('vote', 'desc')->take(6)->get();
-      return view('layout.home', compact('post','category','categories','user'));
+      // $post = DB::table('posts')->orderBy('vote', 'desc')->take(6)->get();
+      // $post= Post::with(['users' => function($query) use ($user){
+
+      //   $query->whereId($user->id);
+
+        
+      // }])->orderBy('vote','desc')->take(6)->get();
+
+      $post = $user->posts()->get();
+      
+      
+      return view('layout.home', compact('post','category','categories','user', 'posts'));
     }
 
   public function userPage()
@@ -29,17 +40,26 @@ class PageController extends Controller
     return view('layout.user' , compact('user'));
   }
 
+  public function profile_setting()
+
+  {
+    $user = Auth::user();
+
+    return view('layout.user_settings' , compact('user'));
+  }
+
   public function getPosts()
     {
+      $user = Auth::user();
       $post = Post::all();
-      return view('layout.posts', compact('post'));
+      return view('layout.posts', compact('post' ,'user'));
     }
 
   public function getSingle($id)
     {
       $post = Post::find($id);
-
-      return view('layout.single', compact('post'));
+      $user = Auth::user();
+      return view('layout.single', compact('post' ,'user'));
     }
 
   public function get_category($id)

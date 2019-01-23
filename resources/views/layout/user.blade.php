@@ -9,11 +9,11 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <ul class="profiles">
-                    <li class="myprofile">My Profile</li>
-                    <li class="myprofile">Profile settings</li>
+                    <a href ='/user'><li class="myprofile">My Profile</li></a> 
+                    <a href ='/user/profile_settings'><li class="myprofile">Profile settings</li></a>
                     <li class="myprofile">My Posts</li>
                     <li class="myprofile">Favorite Posts</li>
-                    <li class="myprofile">Log Out</li>
+                    <a href ='/logout'><li class="myprofile">Log Out</li></a>
                 </ul>
             </div>
             <div class="col-lg-9 col-md-9">

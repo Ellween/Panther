@@ -182,18 +182,21 @@
 
         </div>
       </div>
+      
 
         <div class="container-fluid d-flex flex-column justify-content-around text-light h-100 align-items-center">
-         
+            
+
             <h1 class ='all_categories' >Category</h1>
           <div class="category d-flex">
             @foreach($categories as $category)
               <option class ='cat category_id' value="{{$category->id}}">{{$category->category}}</option>
             @endforeach
           </div>
+
           <div class="row w-100 amas" style ='width: 86% !important;'>
               @foreach($post as $post)
-                <div data-id ={{$post->id}} class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url("{{asset("images/" . $post->bg_img)}}"); '>
+                <div @if(Auth::check()) id ={{$user->id}} @endif data-id ={{$post->id}} class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url("{{asset("images/" . $post->bg_img)}}"); '>
                   <div class="both_images_titles h-100  d-flex justify-content-between flex-column" style ='position: relative;'>
                     <div class="titles pt-3 text-center">
                       <h3 style ='font-weight: 300;'>{{$post->title}}</h3>
@@ -220,15 +223,18 @@
 
                     </div>
                   </div>
+
+                  
                   <div class ='post_link w-100 d-flex justify-content-end'>
-
-                  <a  href ='/post/{{$post->id}}' style ='color: white;' ><p  class ='specific_post' style ='text-decoration: underline;' >Read More</p></a>
-
-</div>
-
-
-
-
+                    <div class="div stars_read d-flex flex-column">
+                        <div>
+                            <p class ='star' ><i class="fas fa-star"></i></p>
+                        </div>
+                    <a  href ='/post/{{$post->id}}' style ='color: white;' ><p  class ='specific_post' style ='text-decoration: underline;' >Read More</p></a>
+  
+                    </div>
+                    </div>
+                     
                   </div>
                   <div class="description p-2">
                     <p class ='p-2' >{{$post->content}}</p>

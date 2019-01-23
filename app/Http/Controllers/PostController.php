@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Image;
 use App\Post;
+use Auth;
 
 
 class PostController extends Controller
@@ -71,6 +72,22 @@ class PostController extends Controller
       return redirect('/posts');
 
     }
+
+
+    public function storeFav(Request $request , $post)
+    
+    {
+
+      $post = Post::find($post);
+      $user = Auth::user();
+
+      $post->users()->sync($user->id, false);
+
+      
+      
+
+    }
+   
 
     public function storevote(Request $request , $post)
     {
