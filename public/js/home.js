@@ -307,8 +307,8 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $('.star').click(function(){
-    var id = $(this).parent().parent().parent().parent().attr('id');
-    var post_id = $(this).parent().parent().parent().attr('data-id');
+    var id = $(this).parent().parent().parent().parent().parent().parent().attr('id');
+    var post_id = $(this).parent().parent().parent().parent().parent().parent().attr('data-id');
     $.ajax({
 
       headers: {

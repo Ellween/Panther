@@ -16,7 +16,6 @@ class PageController extends Controller
   public function getIndex()
     {
       $user = Auth::user();
-      $single = $user->id;
       $category = Category::all();
       $categories = Category::all();
       // $post = DB::table('posts')->orderBy('vote', 'desc')->take(6)->get();
@@ -30,8 +29,15 @@ class PageController extends Controller
       // $post = $user->posts()->get();
       
       $post = Post::with('users')->get();
+      
 
-      $posts_array =  $user->posts->pluck('id');
+        if(Auth::check())
+        {
+          $posts_array =  $user->posts->pluck('id');
+
+        }
+
+      
 
 
       
@@ -57,7 +63,7 @@ class PageController extends Controller
     $user = Auth::user();
     $post = $user->posts()->get();
 
-    return view('layout.user_posts' , compact('user','post  q'));
+    return view('layout.user_posts' , compact('user','post'));
   }
 
   public function getPosts()

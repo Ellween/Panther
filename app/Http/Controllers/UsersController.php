@@ -7,6 +7,7 @@ use Auth;
 use Hash;
 
 
+
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -17,11 +18,30 @@ class UsersController extends Controller
             'new_name' => 'required|string|max:255',
             'new_pass' => 'required|string|min:6',
             'old_pass' => 'required|string|min:6',
+            'new_image' => 'required',
         ));
 
+      
+
+        
+        
 
         $user = Auth::user();
 
+       
+        
+        if ($request->hasFile('gif')) {
+            $gif = $request->file('gif');
+            $name = time().'.'.$gif->getClientOriginalExtension();
+            $destinationPath = public_path('/images');
+            $gif->move($destinationPath, $name);
+          }
+
+          else {
+              dd($request);
+          }
+  
+   
 
 
 
@@ -29,8 +49,12 @@ class UsersController extends Controller
         {
          $user->password =  Hash::make($request->new_pass);
        }
+      
 
+        
         $user->name = $request->new_name;
+        $user->user_pic = $name;
+        
 
         $user->save();
 

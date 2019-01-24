@@ -91,10 +91,6 @@
                       <input id ='password' class ='form-control mt-4 hm' type="password" name="password" value="" required>
                   </div>
                   <div class="form_name" style = 'position: relative;'>
-                      <label for="email" class ='va'  >User Picture</label>
-                      <input id ='user_pic' class ='form-control mt-4 hm' type="file" name="user_pic" value="" required>
-                  </div>
-                  <div class="form_name" style = 'position: relative;'>
                     <label for="phone" class ='va'  >Phone Number</label>
                     <input id ='phone'  class ='form-control mt-4 hm' type="text" name="phone" value="" required>
                   </div>
@@ -227,16 +223,34 @@
                   
                   <div class ='post_link w-100 d-flex justify-content-end'>
                     <div class="div stars_read d-flex flex-column">
+                      @if(Auth::check())
                         <div id ={{$posts_array}}  data-id = {{$post->id}}>
 
-                          @foreach ($posts_array as $array)
-                            @if ( $array === $post->id )
-                            <p class ='star' style ='color:red;' ><i class="fas fa-star"></i></p>
+                         
+                          
 
-                            @endif
-                          @endforeach
+                             
+                       @if(in_array($post->id, $posts_array->toArray()))
+
+                          <p><i class="fas fa-star star" style ='color: yellow;'></i></p>
+
+                          @else 
+
+                          <p><i class="fas fa-star star"></i></p>
+                          
+                        @endif 
+                            
+
 
                         </div>
+
+                        @else 
+                        
+                        <p><i class="fas fa-star star"></i></p>
+
+                        @endif
+
+
                     <a  href ='/post/{{$post->id}}' style ='color: white;' ><p  class ='specific_post' style ='text-decoration: underline;' >Read More</p></a>
   
                     </div>

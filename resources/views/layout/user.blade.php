@@ -7,7 +7,7 @@
 
     <div class="container-fluid pt-5">
         <div class="row">
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-3 col-md-3 p-0">
                 <ul class="profiles">
                     <a href ='/user'><li class="myprofile">My Profile</li></a> 
                     <a href ='/user/profile_settings'><li class="myprofile">Profile settings</li></a>

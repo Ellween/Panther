@@ -7,7 +7,7 @@
 
     <div class="container-fluid pt-5">
         <div class="row">
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-3 col-md-3 p-0">
                 <ul class="profiles">
                         <a href ='/user'><li class="myprofile">My Profile</li></a> 
                         <a href ='/user/profile_settings'><li class="myprofile">Profile settings</li></a>
@@ -21,7 +21,7 @@
                 
                         <div class="row w-100 amas" style ='width: 86% !important;'>
                                 @foreach($post as $post)
-                                  <div @if(Auth::check()) id ={{$user->id}} @endif data-id ={{$post->id}} class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url("{{asset("images/" . $post->bg_img)}}"); '>
+                                  <div @if(Auth::check()) id ={{$user->id}} @endif data-id ={{$post->id}} class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url("{{asset("images/" . $post->bg_img)}}"); min-height: auto;'>
                                     <div class="both_images_titles h-100  d-flex justify-content-between flex-column" style ='position: relative;'>
                                       <div class="titles pt-3 text-center">
                                         <h3 style ='font-weight: 300;'>{{$post->title}}</h3>

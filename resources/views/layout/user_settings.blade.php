@@ -7,7 +7,7 @@
 
     <div class="container-fluid pt-5">
         <div class="row">
-            <div class="col-lg-3 col-md-3">
+            <div class="col-lg-3 col-md-3 p-0">
                 <ul class="profiles">
                         <a href ='/user'><li class="myprofile">My Profile</li></a> 
                         <a href ='/user/profile_settings'><li class="myprofile">Profile settings</li></a>
@@ -34,6 +34,11 @@
                                         <label for="new_pass">New Password</label>
                                         <input type="password" name ='new_pass' class ='form-control'>
                                     </div>
+
+                                    <div class="location_gif d-flex flex-column">
+                                            <label for="gif">Upload the gif</label>
+                                            <input class =' hm' type="file" name="gif" value="">
+                                          </div>
 
                                     <div class="change_settings pt-3 text-center">
                                             <button class ='btn btn-success' type ='submit' > Change</button>

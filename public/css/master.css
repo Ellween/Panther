@@ -382,6 +382,14 @@ color: white;
 
 .profiles {
   list-style: none;
+  background: rgb(221, 224, 230);
+  padding-bottom: 20px;
+}
+
+.profiles a {
+  text-decoration: none;
+  font-size: 13px;
+  color: black;
 }
 
 .main_side {
@@ -389,10 +397,12 @@ color: white;
 }
 
 .myprofile {
-  font-size: 31px;
+  font-size: 20px;
   cursor: pointer;
-  padding-top: 10px;
+  padding-top: 20px;
 }
+
+
 
 .myprofile:hover {
   color: red;
