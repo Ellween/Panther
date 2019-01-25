@@ -20,8 +20,8 @@
                 <div class="main_side d-flex px-3">
                 
                     <div class="profile_interest">
-                        <form action="/change" method="POST">
-                            @csrf
+                        <form action="/change" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
                                 <div class="change_username">
                                     <h3>Change UserName</h3>
                                         <p>Your UserName :  {{$user->name}}</p>
@@ -33,12 +33,14 @@
                                         <input type="password" name ='old_pass' class= 'form-control'>
                                         <label for="new_pass">New Password</label>
                                         <input type="password" name ='new_pass' class ='form-control'>
+
+                                       
                                     </div>
 
-                                    <div class="location_gif d-flex flex-column">
-                                            <label for="gif">Upload the gif</label>
-                                            <input class =' hm' type="file" name="gif" value="">
-                                          </div>
+                                    <div class="change_picture pt-3">
+                                        <h3>Change Profile Picture</h3>
+                                            <input type="file" name ='img'>
+                                    </div>
 
                                     <div class="change_settings pt-3 text-center">
                                             <button class ='btn btn-success' type ='submit' > Change</button>

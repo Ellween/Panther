@@ -69,7 +69,7 @@ class PostController extends Controller
           $post->save();
 
 
-      return redirect('/posts');
+          return response()->json(['response' => 'success', 'post' => $post ]);
 
     }
 

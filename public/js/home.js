@@ -80,6 +80,105 @@ $(document).ready(function(){
     });
 
 
+    // Store Posts  With ajax 
+
+    $(document).ready(function(){
+      $('.add_game').click(function(e){
+        e.preventDefault();
+
+        $.ajax({
+          url:'/add_post',
+          data:new FormData($("#upload_form")[0]),
+          dataType:'json',
+          async:false,
+          type:'post',
+          processData: false,
+          contentType: false,
+          success:function(response){
+            
+            console.log(response);
+            console.log(response.post.id);
+
+            var inputs='';
+
+            var inputs =`  <div data-id =`+ response.post.id + ` class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden;  background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url(/images/`+ response.post.bg_img +`);' >
+            <div class="both_images_titles h-100  d-flex justify-content-between flex-column" style ='position: relative;'>
+              <div class="titles pt-3 text-center">
+                <h3 style ='font-weight: 300;'>`+ response.post.title + `</h3>
+              </div>
+
+              <div class="img-title d-flex pb-3 w-100 justify-content-between">
+                <div class ='image_title d-flex'>
+                <img src="/images/`+ response.post.image +`" alt="" style='height: 100%; width: 100px;'>
+                <div class="d-flex flex-column">
+                  <h3 class ='text-light pl-3' style ='font-weight: 700; font-size: 22px;'>`+ response.post.place_name + `</h3>
+
+
+
+                </div>
+              </div>
+                <div class ='voting'>
+                <form class=" d-flex align-items-center" action="/add_vote/{{$post->id}}" method="post">
+                  <i class='fas fa-arrow-alt-circle-up vote'></i>
+                      <p class ='votes ml-2' style ='margin: 0;' >`+ '0' + `</p>
+                </form>
+
+
+              </div>
+            </div>
+            <div class ='post_link w-100 d-flex justify-content-end'>
+              <div class="div stars_read d-flex flex-column">
+
+                  <p><i class="fas fa-star star"></i></p>
+                  <a  href ='/post/{{$post->id}}' style ='color: white;' ><p  class ='specific_post' style ='text-decoration: underline;' >Read More</p></a>
+
+              </div>
+            </div>
+
+            </div>
+            
+            <div class="description p-2">
+              <p class ='p-2' >`+ response.post.content +`</p>
+            </div>
+            <img class ='invisible' src ='/images/img_size.svg'>
+          </div>`;
+
+
+
+            $('.amas').append(inputs);
+
+          },
+        });
+
+      });
+
+    });
+
+
+    // $(document).ready(function(){
+    //   var $grid = $('.amas').masonry({
+    //     columnWidth: 80
+    //   });
+    //   // change size of item by toggling gigante class
+    //   $grid.on( 'click', '.grid-item', function() {
+    //     $(this).toggleClass('gigante');
+    //     // trigger layout after item size changes
+    //     $grid.masonry('layout');
+    //   });
+    
+    
+    //   $('.add_loc').on( 'click', function() {
+    // // create new item elements
+    // var $items = $('<div class="grid-item"><img src ="https://i.pinimg.com/236x/28/61/2c/28612c9437c0756210d9e43fabd7779c.jpg"></div>');
+    // // append items to grid
+    // $('.amas').append( $items )
+    // // add and lay out newly appended items
+    // .isotope( 'appended', $items );
+    // });
+    
+    // });
+
+
 $(document).on('click' ,'.vote' ,function(event){
    
       
@@ -305,10 +404,10 @@ $(document).ready(function(){
 }); 
 
 
-$(document).ready(function(){
-  $('.star').click(function(){
-    var id = $(this).parent().parent().parent().parent().parent().parent().attr('id');
-    var post_id = $(this).parent().parent().parent().parent().parent().parent().attr('data-id');
+$(document).on('click','.star' , function(event){
+    var star  = event.target;
+    var id = $(event.target).parent().parent().parent().parent().parent().parent().attr('id');
+    var post_id = $(event.target).parent().parent().parent().parent().parent().parent().attr('data-id');
     $.ajax({
 
       headers: {
@@ -321,7 +420,7 @@ $(document).ready(function(){
 
         success:function(data)
         {
-          console.log('yes');
+          $(star).attr('style' ,'color: yellow');
          
         },
 
@@ -334,5 +433,5 @@ $(document).ready(function(){
 
       });
 
-  });
+ 
 }); 

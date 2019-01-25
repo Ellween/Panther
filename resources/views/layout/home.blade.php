@@ -133,7 +133,7 @@
           <p class ='p-0 m-0 pr-2' ><i class="fas fa-times close"></i></p>
         </div>
         <div class="location_form">
-          <form class="post_form" action="/add_post" method="POST" enctype="multipart/form-data">
+          <form class="post_form" action="/add_post" method="POST" id="upload_form" enctype="multipart/form-data">
             @csrf
             <div class="location_title d-flex flex-column">
               <label for="title">Title</label>
@@ -145,7 +145,7 @@
             </div>
             <div class="location_gif d-flex flex-column">
               <label for="gif">Upload the gif</label>
-              <input class =' hm' type="file" name="gif" value="">
+              <input class ='hm' type="file" name="gif" value="">
             </div>
             <div class="location_gif d-flex flex-column">
                 <label for="gif">Upload background</label>
@@ -172,7 +172,7 @@
               <textarea class='form-control' type="text" name="long_text" value=""></textarea>
             </div>
             <div class ='location_add w-100 d-flex justify-content-center'>
-              <button type="submit" class ='btn btn-primary add_loc mt-2 ' style ='background-color: #b1b6bc78; border-color: #b1b6bc36;'  name="button">ADD Location</button>
+              <button type="submit" class ='btn btn-primary add_game mt-2 ' style ='background-color: #b1b6bc78; border-color: #b1b6bc36;'  name="button">ADD Location</button>
             </div>
           </form>
 
@@ -189,10 +189,11 @@
               <option class ='cat category_id' value="{{$category->id}}">{{$category->category}}</option>
             @endforeach
           </div>
+         
 
           <div class="row w-100 amas" style ='width: 86% !important;'>
               @foreach($post as $post)
-                <div @if(Auth::check()) id ={{$user->id}} @endif data-id ={{$post->id}} class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url("{{asset("images/" . $post->bg_img)}}"); '>
+                <div @if(Auth::check()) id ={{$user->id}} @endif data-id ={{$post->id}} class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img grid-item" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url("{{asset("images/" . $post->bg_img)}}"); '>
                   <div class="both_images_titles h-100  d-flex justify-content-between flex-column" style ='position: relative;'>
                     <div class="titles pt-3 text-center">
                       <h3 style ='font-weight: 300;'>{{$post->title}}</h3>
@@ -264,6 +265,7 @@
                 </div>
               @endforeach
           </div>
+          
         </div>
         <div class="container-fluid">
           <div class="many_more w-100 d-flex justify-content-center pt-5 mt-5">
