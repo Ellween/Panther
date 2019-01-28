@@ -5,22 +5,22 @@
 @section('content')
     
 
-    <div class="container-fluid pt-5">
+    <div class="container-fluid pt-5 section_1_bg_img">
         <div class="row">
             <div class="col-lg-3 col-md-3 p-0">
                 <ul class="profiles">
-                        <a href ='/user'><li class="myprofile">My Profile</li></a> 
-                        <a href ='/user/profile_settings'><li class="myprofile">Profile settings</li></a>
-                        <li class="myprofile">My Posts</li>
-                        <a href ='/user_posts'><li class="myprofile">Favorite Posts</li></a> 
-                        <a href ='/logout'><li class="myprofile">Log Out</li></a>
+                    <a href ='/user'><li class="myprofile "><span class='try' >My Profile</span></li></a> 
+                    <a href ='/user/profile_settings'><li class="myprofile"><span class='try' >Profile settings</span></li></a>
+                    <a href ='#'><li class="myprofile"><span class='try' >My Posts</span></li></a>
+                    <a href ='/user_posts'><li class="myprofile"><span class='try' >Favorite Posts</span></li></a> 
+                    <a href ='/logout'><li class="myprofile"><span class='try' >Log Out</span></li></a>
                 </ul>
             </div>
             <div class="col-lg-9 col-md-9">
                 <div class="main_side d-flex px-3">
                 
                     <div class="profile_interest">
-                        <form action="/change" method="POST" enctype="multipart/form-data">
+                        <form action="/change" method="POST" enctype="multipart/form-data" class ='w-50'>
                             {{ csrf_field() }}
                                 <div class="change_username">
                                     <h3>Change UserName</h3>

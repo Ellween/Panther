@@ -3,6 +3,24 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+p {
+  font-family: 'Karla', 'sans-serif';
+}
+
+h3 , h6 {
+  font-family: 'Karla', 'sans-serif';
+}
+
+h1 {
+  font-family: "Rubik";
+}
+
+
+
+li , label {
+  font-family: 'Karla', 'sans-serif';
+}
+
 html {
   font-family: 'Source Sans Pro', sans-serif;
 }
@@ -382,31 +400,57 @@ color: white;
 
 .profiles {
   list-style: none;
-  background: rgb(221, 224, 230);
   padding-bottom: 20px;
 }
 
 .profiles a {
   text-decoration: none;
   font-size: 13px;
-  color: black;
+  color: white;
+  font-family: 'Rubik' , 'sans-serif';
 }
+
+
 
 .main_side {
   padding-top: 10px;
 }
 
 .myprofile {
-  font-size: 20px;
+  font-size: 25px;
   cursor: pointer;
-  padding-top: 20px;
+  padding-top: 30px;
+ 
+}
+
+.myprofile span {
+  position: relative;
+}
+
+.myprofile span::after {
+  content: "";
+  height: 2px;
+  width: 0%;
+  background: white;
+  position: absolute;
+  bottom: -10px;
+  transition: all 0.5s;
+}
+
+.myprofile span:hover::after {
+  width: 100%;
+}
+
+.try::after {
+  left: 50%;
+  transition: 0.5s;
+}
+
+.try:hover::after {
+  left: 0;
 }
 
 
-
-.myprofile:hover {
-  color: red;
-}
 
 .profile_picture {
   width: 300px;
@@ -419,6 +463,19 @@ color: white;
 .profile_interest {
   width: calc(100% - 300px);
   padding-left: 20px;
+}
+.profile_interest h3 {
+  color: #fff;
+}
+
+.profile_interest label {
+  color: #fff;
+}
+
+.profile_interest p {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 

@@ -5,23 +5,23 @@
 @section('content')
     
 
-    <div class="container-fluid pt-5">
+    <div class="container-fluid pt-5 section_1_bg_img">
         <div class="row">
             <div class="col-lg-3 col-md-3 p-0">
-                <ul class="profiles">
-                        <a href ='/user'><li class="myprofile">My Profile</li></a> 
-                        <a href ='/user/profile_settings'><li class="myprofile">Profile settings</li></a>
-                        <li class="myprofile">My Posts</li>
-                        <a href ='/user_posts'><li class="myprofile">Favorite Posts</li></a> 
-                        <a href ='/logout'><li class="myprofile">Log Out</li></a>
-                </ul>
+              <ul class="profiles">
+                <a href ='/user'><li class="myprofile "><span class='try' >My Profile</span></li></a> 
+                <a href ='/user/profile_settings'><li class="myprofile"><span class='try' >Profile settings</span></li></a>
+                <a href ='#'><li class="myprofile"><span class='try' >My Posts</span></li></a>
+                <a href ='/user_posts'><li class="myprofile"><span class='try' >Favorite Posts</span></li></a> 
+                <a href ='/logout'><li class="myprofile"><span class='try' >Log Out</span></li></a>
+            </ul>
             </div>
             <div class="col-lg-9 col-md-9">
-                <div class="main_side d-flex px-3">
+                <div class="main_side d-flex px-3 ">
                 
                         <div class="row w-100 amas" style ='width: 86% !important;'>
                                 @foreach($post as $post)
-                                  <div @if(Auth::check()) id ={{$user->id}} @endif data-id ={{$post->id}} class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url("{{asset("images/" . $post->bg_img)}}"); min-height: auto;'>
+                                  <div @if(Auth::check()) id ={{$user->id}} @endif data-id ={{$post->id}} class="col-md-6  col-lg-4 col-sm-12  mt-3  home-bg-img" style ='overflow: hidden; background-image:linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1.33) ), url("{{asset("images/" . $post->bg_img)}}"); min-height: auto; color: white;'>
                                     <div class="both_images_titles h-100  d-flex justify-content-between flex-column" style ='position: relative;'>
                                       <div class="titles pt-3 text-center">
                                         <h3 style ='font-weight: 300;'>{{$post->title}}</h3>
